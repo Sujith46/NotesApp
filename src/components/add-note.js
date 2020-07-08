@@ -1,10 +1,22 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function AddNote() {
+import Note from '../screens/notes';
+
+const Stack = createStackNavigator();
+
+export default function AddNote({ navigation }) {
+    const addClicked = () => {
+        <NavigationContainer>
+            <Stack.Screen name="Note" component={Note}></Stack.Screen>
+        </NavigationContainer>
+    }
+    
     return(
         <View style={styles.notesContainer}>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={addClicked}>
                 <Text style={styles.addText}>+</Text>
             </TouchableOpacity>
         </View>
